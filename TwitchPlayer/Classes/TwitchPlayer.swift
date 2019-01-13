@@ -93,28 +93,28 @@ const player = new Twitch.Embed('twitch-embed', {
 
     /// `showsChatPanel` specifies if the chat panel is shown.
     ///
-    /// - Note: This variable can only be set on initialization.
+    /// - Warning: This variable is only for initialization. For correct values, please use `playerLayout` instead.
     @IBInspectable private(set) var showingChatPanel: Bool = false {
         didSet {
-            // TODO:
+            playerLayout = showingChatPanel ? .videoWithChat : .videoOnly
         }
     }
 
     /// `chatModeIsMobile` is a read-only variable that specifies if this player's chat mode is mobile.
     ///
-    /// - Note: This variable can only be set on initialization.
+    /// - Warning: This variable is only for initialization. For correct values, please use `chatMode` instead.
     @IBInspectable private(set) var chatModeIsMobile: Bool = true {
         didSet {
-            // TODO:
+            chatMode = chatModeIsMobile ? .mobile : .defaultMode
         }
     }
 
     /// `playerThemeIsDark` specifies if this player's theme is the dark mode.
     ///
-    /// - Note: This variable can only be set on initialization.
+    /// - Warning: This variable is only for initialization. For correct values, please use `playerTheme` instead.
     @IBInspectable private(set) var playerThemeIsDark: Bool = true {
         didSet {
-            // TODO:
+            playerTheme = playerThemeIsDark ? .dark : .light
         }
     }
 
