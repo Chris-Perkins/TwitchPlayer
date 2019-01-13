@@ -1,11 +1,6 @@
 use_frameworks!
 
 target 'TwitchPlayer_Example' do
+  platform :ios, '11.0'
   pod 'TwitchPlayer', :path => '../'
-
-  target 'TwitchPlayer_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end
