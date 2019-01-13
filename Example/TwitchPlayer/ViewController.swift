@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwitchPlayer
 
 class ViewController: UIViewController {
 
