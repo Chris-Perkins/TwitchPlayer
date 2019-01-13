@@ -83,11 +83,32 @@ import WebKit
     private static let playerHtmlContent =
 """
 <html><body><div id='twitch-embed' /><script src='https://embed.twitch.tv/embed/v1.js'></script><script type='text/javascript'>
-const player = new Twitch.Embed('twitch-embed', {
-    width: '100%',
-    height: '100%',
-    {0}
-});
+    var playerCommandsToExecute = [];
+    var player = null;
+
+    const embed = new Twitch.Embed('twitch-embed', {
+        width: '100%',
+        height: '100%',
+        {0}
+    });
+
+    embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+        player = embed.getPlayer();
+        player.play();
+        
+        playerCommandsToExecute.forEach(function(playerCommand) {
+            playerCommand();
+        });
+        playerCommandsToExecute = [];
+    });
+
+    function performPlayerCommand(command) {
+        if (player == null) {
+            playerCommandsToExecute.push(command);
+        } else {
+            command();
+        }
+    }
 </script></body></html>
 """
 
@@ -215,6 +236,29 @@ const player = new Twitch.Embed('twitch-embed', {
 
         updateWebPlayer()
     }
+
+    // MARK: - Web Player Interaction Functions
+
+    /// `pause` pauses the Twitch Player. Note that this does *not* toggle the pause state; this command will only ever
+    /// pause the player. To toggle playback, please see `togglePlaybackState`.
+    public func pause() {
+        evaluateJavaScript("performPlayerCommand(function() { player.pause(); })")
+    }
+
+    /// `resume` will cause the Twitch Player to play. Note that this does *not* toggle the playback state; this command
+    /// will only ever cause the player to play. To toggle playback, please see `togglePlaybackState`.
+    public func resume() {
+        evaluateJavaScript("performPlayerCommand(function() { player.play(); })")
+    }
+
+    /// `togglePlaybackState` will toggle the current play state of the embedded Twitch Player. I.e. if the player is
+    /// paused, it will play. If the player is playing, it will pause it.
+    public func togglePlaybackState() {
+        evaluateJavaScript(
+            "performPlayerCommand(function() { if (player.isPaused()) { player.play(); } else { player.pause(); } })")
+    }
+
+    // MARK: - Web Player Loading Functions
 
     /// `updateWebPlayer` will update the loaded Twitch Player with the current parameters of the Twitch Player.
     private func updateWebPlayer() {

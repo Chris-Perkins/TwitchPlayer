@@ -33,17 +33,31 @@
                                 </wkWebViewConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="channelToLoad" value="monstercat"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showingChatPanel" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ej-Nd-kZc">
+                                <rect key="frame" x="37.5" y="441.5" width="300" height="30"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pausePressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="md0-jy-gSy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ojh-rG-T2u" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="1J8-3a-b7Y"/>
                             <constraint firstItem="ojh-rG-T2u" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.8" priority="999" id="3Tc-gY-k8D"/>
+                            <constraint firstItem="0Ej-Nd-kZc" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="GKZ-ej-W5l"/>
                             <constraint firstItem="ojh-rG-T2u" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Gk3-RZ-Tb2"/>
+                            <constraint firstItem="0Ej-Nd-kZc" firstAttribute="width" secondItem="ojh-rG-T2u" secondAttribute="width" id="N4p-CI-2Rt"/>
+                            <constraint firstItem="0Ej-Nd-kZc" firstAttribute="top" secondItem="ojh-rG-T2u" secondAttribute="bottom" constant="8" id="bBg-Ie-KUO"/>
                             <constraint firstItem="ojh-rG-T2u" firstAttribute="height" relation="lessThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="height" multiplier="0.8" id="gaJ-8i-11N"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="twitchPlayer" destination="ojh-rG-T2u" id="vMO-En-Afg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
