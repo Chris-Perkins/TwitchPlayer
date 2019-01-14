@@ -11,7 +11,11 @@ import WebKit
 /// Embedded Player as specified by the Twitch Documentation.
 ///
 /// In this class, you can modify the following variables:
-/// TODO: Variables here
+/// * `clipId` - The ID of the Clip to Play
+/// * `allowsFullScreen`: Whether or not full screen is enabled on this clip
+/// * `scrollingEnabled`: Whether or not scroll is enabled on this clip
+/// * `autoPlayEnabled`: Whether or not the clip will autoplay on initialization
+/// * `muteOnLoad`: Whether or not the clip should be muted when it loads
 @IBDesignable public class TwitchClipPlayer: WKWebView {
 
     // MARK: - Custom Data Types
@@ -131,19 +135,17 @@ import WebKit
 
     // MARK: - Life Cycle
 
-    /// Initializes a Twitch Player with the input parameters
+
+    /// Initializes a Twitch Clip Player with the input parameters.
     ///
     /// - Parameters:
-    ///   - channelToLoad: The name of the channel to load; leave blank if `videoToLoad` or `collectionToLoad` is
-    /// specified.
-    ///   - videoToLoad: The ID of the video to load; leave blank if `channelToLoad` is specified.
-    ///   - collectionToLoad: The ID of the collection to load; leave blank if `channelToLoad` is specified.
-    ///   - playerLayout: The layout of the player
-    ///   - chatMode: The mode of the chat
-    ///   - allowsFullScreen: Whether or not the player allows full screen
-    ///   - playerTheme: The theme of the player
-    ///   - frame: The frame of the player
-    ///   - configuration: The configuration for the web view
+    ///   - clipId: The ID of the clip to load
+    ///   - allowsFullScreen: Whether or not full screen is enabled on this clip
+    ///   - scrollEnabled: Whether or not scroll is enabled on this clip
+    ///   - autoPlayEnabled: Whether or not the clip will autoplay on initialization
+    ///   - muteOnLoad: Whether or not the clip should be muted when it loads
+    ///   - frame: The frame of the web view
+    ///   - configuration: The configuration of the web view to host the clip in
     init(clipId: String, allowsFullScreen: Bool, scrollEnabled: Bool, autoPlayEnabled: Bool = false,
          muteOnLoad: Bool = true, frame: CGRect, configuration: WKWebViewConfiguration) {
         self.clipId = clipId
