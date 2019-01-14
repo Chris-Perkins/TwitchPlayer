@@ -32,7 +32,7 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="channelToLoad" value="tsm_daequan"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="channelToLoad" value="monstercat"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showingChatPanel" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </wkWebView>

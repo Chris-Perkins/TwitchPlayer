@@ -67,23 +67,6 @@ import WebKit
         case videoOnly = "video"
     }
 
-    /// `PlayerInitializationKeys` specifies the different keys that are a part of initialization for a Twitch Player.
-    private struct PlayerInitializationKeys {
-        internal static let channel = "channel"
-        internal static let allowsFullScreen = "allowfullscreen"
-        internal static let chatMode = "chat"
-        internal static let collection = "collection"
-        internal static let fontSize = "font-size"
-        internal static let height = "height"
-        internal static let layout = "layout"
-        internal static let theme = "theme"
-        internal static let video = "video"
-        internal static let width = "width"
-
-        /// Uninitializable
-        private init() { }
-    }
-
     /// `jsonParameterDelimiter` is used to delimiter different parameters in JSON.
     private static let jsonParameterDelimiter = ","
 
@@ -400,35 +383,35 @@ import WebKit
 
         if let channelToLoad = channelToLoad {
             currentPlayerParameters.append(
-                getJsonParameterFormat(forKey: PlayerInitializationKeys.channel, forValue: channelToLoad))
+                getJsonParameterFormat(forKey: TwitchWebPlayerKeys.channel, forValue: channelToLoad))
         }
         if let videoToLoad = videoToLoad {
             currentPlayerParameters.append(
-                getJsonParameterFormat(forKey: PlayerInitializationKeys.video, forValue: videoToLoad))
+                getJsonParameterFormat(forKey: TwitchWebPlayerKeys.video, forValue: videoToLoad))
         }
         if let collectionToLoad = collectionToLoad {
             currentPlayerParameters.append(
-                getJsonParameterFormat(forKey: PlayerInitializationKeys.collection, forValue: collectionToLoad))
+                getJsonParameterFormat(forKey: TwitchWebPlayerKeys.collection, forValue: collectionToLoad))
         }
         if let playerLayout = playerLayout {
             currentPlayerParameters.append(
-                getJsonParameterFormat(forKey: PlayerInitializationKeys.layout, forValue: playerLayout.rawValue))
+                getJsonParameterFormat(forKey: TwitchWebPlayerKeys.layout, forValue: playerLayout.rawValue))
         }
         if let chatMode = chatMode {
             currentPlayerParameters.append(
-                getJsonParameterFormat(forKey: PlayerInitializationKeys.chatMode, forValue: chatMode.rawValue))
+                getJsonParameterFormat(forKey: TwitchWebPlayerKeys.chatMode, forValue: chatMode.rawValue))
         }
         if let fontSize = fontSize {
             currentPlayerParameters.append(
-                getJsonParameterFormat(forKey: PlayerInitializationKeys.fontSize, forValue: fontSize.rawValue))
+                getJsonParameterFormat(forKey: TwitchWebPlayerKeys.fontSize, forValue: fontSize.rawValue))
         }
         if let playerTheme = playerTheme {
             currentPlayerParameters.append(
-                getJsonParameterFormat(forKey: PlayerInitializationKeys.theme, forValue: playerTheme.rawValue))
+                getJsonParameterFormat(forKey: TwitchWebPlayerKeys.theme, forValue: playerTheme.rawValue))
         }
         if let allowsFullScreen = allowsFullScreen {
             currentPlayerParameters.append(
-                getJsonParameterFormat(forKey: PlayerInitializationKeys.allowsFullScreen, forValue: allowsFullScreen,
+                getJsonParameterFormat(forKey: TwitchWebPlayerKeys.allowsFullScreen, forValue: allowsFullScreen,
                                        isStringValued: false))
         }
 
