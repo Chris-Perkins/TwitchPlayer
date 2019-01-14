@@ -119,7 +119,7 @@ import WebKit
     /// `showsChatPanel` specifies if the chat panel is shown.
     ///
     /// - Warning: This variable is only for initialization. For correct values, please use `playerLayout` instead.
-    @IBInspectable private(set) var showingChatPanel: Bool = false {
+    @IBInspectable private var showingChatPanel: Bool = false {
         didSet {
             playerLayout = showingChatPanel ? .videoWithChat : .videoOnly
         }
@@ -128,7 +128,7 @@ import WebKit
     /// `chatModeIsMobile` is a read-only variable that specifies if this player's chat mode is mobile.
     ///
     /// - Warning: This variable is only for initialization. For correct values, please use `chatMode` instead.
-    @IBInspectable private(set) var chatModeIsMobile: Bool = true {
+    @IBInspectable private var chatModeIsMobile: Bool = true {
         didSet {
             chatMode = chatModeIsMobile ? .mobile : .defaultMode
         }
@@ -137,7 +137,7 @@ import WebKit
     /// `playerThemeIsDark` specifies if this player's theme is the dark mode.
     ///
     /// - Warning: This variable is only for initialization. For correct values, please use `playerTheme` instead.
-    @IBInspectable private(set) var playerThemeIsDark: Bool = true {
+    @IBInspectable private var playerThemeIsDark: Bool = true {
         didSet {
             playerTheme = playerThemeIsDark ? .dark : .light
         }
