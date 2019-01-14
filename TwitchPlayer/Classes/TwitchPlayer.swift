@@ -219,7 +219,7 @@ import WebKit
     ///   - playerTheme: The theme of the player
     ///   - frame: The frame of the player
     ///   - configuration: The configuration for the web view
-    init(channelToLoad: String? = "monstercat", videoToLoad: String?, collectionToLoad: String?,
+    init(channelToLoad: String?, videoToLoad: String?, collectionToLoad: String?,
          playerLayout: PlayerLayout?, chatMode: ChatDisplayMode? = .mobile,
          allowsFullScreen: Bool = true, playerTheme: PlayerTheme? = .dark, frame: CGRect,
          configuration: WKWebViewConfiguration) {

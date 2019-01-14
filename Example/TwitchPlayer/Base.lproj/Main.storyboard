@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojh-rG-T2u" customClass="TwitchPlayer" customModule="TwitchPlayer">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojh-rG-T2u" customClass="TwitchClipPlayer" customModule="TwitchPlayer">
                                 <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -32,8 +32,7 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="channelToLoad" value="monstercat"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showingChatPanel" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="clipId" value="DelightfulSmellyDumplingsAsianGlow"/>
                                 </userDefinedRuntimeAttributes>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ej-Nd-kZc">
