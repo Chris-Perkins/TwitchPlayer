@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func pausePressed(_ sender: Any) {
-        twitchPlayer.setVolume(volumeLevel: 1.0)
+        twitchPlayer.setStream(to: "monstercat")
     }
 }
 

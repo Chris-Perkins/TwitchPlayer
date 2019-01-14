@@ -183,7 +183,7 @@ import WebKit
     @IBInspectable private(set) var videoToLoad: String? = nil
 
     /// `channelId` specifies the name of the channel that should be watched.
-    @IBInspectable var channelToLoad: String? {
+    @IBInspectable private(set) var channelToLoad: String? {
         didSet {
             updateWebPlayer()
         }
@@ -192,7 +192,7 @@ import WebKit
     /// `collectionToLoad` specifies the collection that should be loaded.
     ///
     /// - Warning: You **must** specify `videoToLoad` or the player will not work.
-    @IBInspectable var collectionToLoad: String?
+    @IBInspectable private(set) var collectionToLoad: String?
 
     init(channelToLoad: String? = "monstercat", videoToLoad: String?, collectionToLoad: String?,
          playerLayout: PlayerLayout?, chatMode: ChatDisplayMode? = .mobile,
@@ -271,6 +271,24 @@ import WebKit
     /// - Note: This function will not run successfully before the HTML of the web view is loaded.
     public func setVolume(volumeLevel: Float) {
         evaluateJavaScript("performPlayerCommand(function() { player.setVolume(\(volumeLevel)); })")
+    }
+
+    /// `setVideo` sets the video to be played in the Twitch Player.
+    ///
+    /// - Parameters:
+    ///   - videoId: The video to load
+    ///   - timestamp: The timestamp of the video to jump to
+    ///
+    /// - Note: This function will not run successfully before the HTML of the web view is loaded.
+    public func setVideo(to videoId: String, timestamp: Float) {
+        evaluateJavaScript("performPlayerCommand(function() { player.setVideo(\"\(videoId)\", \(timestamp)); })")
+    }
+
+    /// `setStream` sets the channel to be played in the Twitch Player. This will change to the new Streamer.
+    ///
+    /// - Parameter streamName: The name of the stream to load
+    public func setStream(to streamName: String) {
+        evaluateJavaScript("performPlayerCommand(function() { player.setChannel(\"\(streamName)\"); })")
     }
 
     /*
