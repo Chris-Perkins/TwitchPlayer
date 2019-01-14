@@ -7,8 +7,26 @@
 
 import WebKit
 
-/// `TwitchPlayer` is an embeddable Twitch Web Player. You can play Twitch Streams, Videos, and Clips from a
-/// `TwitchPlayer` instance.
+/// `TwitchPlayer` is an embeddable Twitch Web Player. You can play Twitch Streams and Videos from a `TwitchPlayer`
+/// instance.
+///
+/// You can edit the following properties of the TwitchPlayer from the Storyboard and an Initializing function:
+/// * Layout
+/// * Theme
+/// * Chat Mode
+/// * Allows Full Screen
+/// * Channel To View
+/// * Video To View
+/// * Collection to View
+///
+/// You can edit the following after the TwitchPlayer loads successfully:
+/// * viewedChannel - `setChannel(to: String)`
+/// * viewedVideo - `setVideo(to: String, timestamp: Float)`
+/// * viewedCollection - `setCollection(to: String, videoId: String)`
+/// * volume - `setVolume(to: Float)`
+/// * pause state - `pause()`, `play()`, `togglePlaybackState()`
+///
+/// - Note: You **cannot** load a Twitch Clip from this class.
 @IBDesignable public class TwitchPlayer: WKWebView {
 
     /// `PlayerTheme` specifies the potential color themes of a Twitch Player instance.
@@ -72,9 +90,6 @@ import WebKit
     /// `jsonKeyValueDelimiter` is used to delimit a JSON value and a key.
     private static let jsonKeyValueDelimiter = ":"
 
-    /// `twitchPlayerHTMLName` specifies the variable name of the Twitch HTML player in the `playerHtmlContent` String.
-    private static let twitchPlayerHTMLName = "player"
-
     /// `initializationReplacementKey` specifies the String that should be replaced in `playerHtmlContent` in order to
     /// add additional initialization properties.
     private static let initializationReplacementKey = "{0}"
@@ -82,34 +97,40 @@ import WebKit
     /// `playerHtmlContent` holds the HTML Content as a String regarding a Twitch Embedded player.
     private static let playerHtmlContent =
 """
-<html><body><div id='twitch-embed' /><script src='https://embed.twitch.tv/embed/v1.js'></script><script type='text/javascript'>
-    var playerCommandsToExecute = [];
-    var player = null;
+<html>
+    <body>
+        <div id='twitch-embed' />
+        <script src='https://embed.twitch.tv/embed/v1.js'></script><script type='text/javascript'>
+            var playerCommandsToExecute = [];
+            var player = null;
 
-    const embed = new Twitch.Embed('twitch-embed', {
-        width: '100%',
-        height: '100%',
-        {0}
-    });
+            const embed = new Twitch.Embed('twitch-embed', {
+                width: '100%',
+                height: '100%',
+                playsinline: true,
+                {0}
+            });
 
-    embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
-        player = embed.getPlayer();
-        player.play();
-        
-        playerCommandsToExecute.forEach(function(playerCommand) {
-            playerCommand();
-        });
-        playerCommandsToExecute = [];
-    });
+            embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+                player = embed.getPlayer();
+                player.play();
+                
+                playerCommandsToExecute.forEach(function(playerCommand) {
+                    playerCommand();
+                });
+                playerCommandsToExecute = [];
+            });
 
-    function performPlayerCommand(command) {
-        if (player == null) {
-            playerCommandsToExecute.push(command);
-        } else {
-            command();
-        }
-    }
-</script></body></html>
+            function performPlayerCommand(command) {
+                if (player == null) {
+                    playerCommandsToExecute.push(command);
+                } else {
+                    command();
+                }
+            }
+        </script>
+    </body>
+</html>
 """
 
     /// `showsChatPanel` specifies if the chat panel is shown.
@@ -180,7 +201,11 @@ import WebKit
     }
 
     /// `videoToLoad` specifies the video that should be loaded.
-    @IBInspectable private(set) var videoToLoad: String? = nil
+    @IBInspectable private(set) var videoToLoad: String? = nil {
+        didSet {
+            updateWebPlayer()
+        }
+    }
 
     /// `channelId` specifies the name of the channel that should be watched.
     @IBInspectable private(set) var channelToLoad: String? {
@@ -192,8 +217,25 @@ import WebKit
     /// `collectionToLoad` specifies the collection that should be loaded.
     ///
     /// - Warning: You **must** specify `videoToLoad` or the player will not work.
-    @IBInspectable private(set) var collectionToLoad: String?
+    @IBInspectable private(set) var collectionToLoad: String? {
+        didSet {
+            updateWebPlayer()
+        }
+    }
 
+    /// Initializes a Twitch Player with the input parameters
+    ///
+    /// - Parameters:
+    ///   - channelToLoad: The name of the channel to load; leave blank if `videoToLoad` or `collectionToLoad` is
+    /// specified.
+    ///   - videoToLoad: The ID of the video to load; leave blank if `channelToLoad` is specified.
+    ///   - collectionToLoad: The ID of the collection to load; leave blank if `channelToLoad` is specified.
+    ///   - playerLayout: The layout of the player
+    ///   - chatMode: The mode of the chat
+    ///   - allowsFullScreen: Whether or not the player allows full screen
+    ///   - playerTheme: The theme of the player
+    ///   - frame: The frame of the player
+    ///   - configuration: The configuration for the web view
     init(channelToLoad: String? = "monstercat", videoToLoad: String?, collectionToLoad: String?,
          playerLayout: PlayerLayout?, chatMode: ChatDisplayMode? = .mobile,
          allowsFullScreen: Bool = true, playerTheme: PlayerTheme? = .dark, frame: CGRect,
@@ -247,11 +289,11 @@ import WebKit
         evaluateJavaScript("performPlayerCommand(function() { player.pause(); })")
     }
 
-    /// `resume` will cause the Twitch Player to play. Note that this does *not* toggle the playback state; this command
-    /// will only ever cause the player to play. To toggle playback, please see `togglePlaybackState`.
+    /// `play` will cause the Twitch Player to play. Note that this does *not* toggle the playback state; this
+    /// command will only ever cause the player to play. To toggle playback, please see `togglePlaybackState`.
     ///
     /// - Note: This function will not run successfully before the HTML of the web view is loaded.
-    public func resume() {
+    public func play() {
         evaluateJavaScript("performPlayerCommand(function() { player.play(); })")
     }
 
@@ -263,17 +305,18 @@ import WebKit
         evaluateJavaScript(
             "performPlayerCommand(function() { if (player.isPaused()) { player.play(); } else { player.pause(); } })")
     }
-    
+
     /// `setVolume` sets the volume level of the Twitch Player to the input value.
     ///
     /// - Parameter volumeLevel: The level to set the volume to. 0 = muted, 1.0 = maximum.
     ///
     /// - Note: This function will not run successfully before the HTML of the web view is loaded.
-    public func setVolume(volumeLevel: Float) {
+    public func setVolume(to volumeLevel: Float) {
         evaluateJavaScript("performPlayerCommand(function() { player.setVolume(\(volumeLevel)); })")
     }
 
-    /// `setVideo` sets the video to be played in the Twitch Player.
+    /// `setVideo` sets the video to be played in the Twitch Player. This will change the currently viewed item to the
+    /// input video.
     ///
     /// - Parameters:
     ///   - videoId: The video to load
@@ -284,11 +327,23 @@ import WebKit
         evaluateJavaScript("performPlayerCommand(function() { player.setVideo(\"\(videoId)\", \(timestamp)); })")
     }
 
-    /// `setStream` sets the channel to be played in the Twitch Player. This will change to the new Streamer.
+    /// `setChannel` sets the channel to be played in the Twitch Player. This will change the currently viewed item
+    /// to the new channel.
     ///
     /// - Parameter streamName: The name of the stream to load
-    public func setStream(to streamName: String) {
+    public func setChannel(to streamName: String) {
         evaluateJavaScript("performPlayerCommand(function() { player.setChannel(\"\(streamName)\"); })")
+    }
+
+    /// `setCollection` sets the currently viewed collection to be played in the Twitch Player. This will change
+    /// the currently viewed item to the collection.
+    ///
+    /// - Parameters:
+    ///   - collectionId: The collection to watch
+    ///   - videoId: The ID of the video to watch
+    public func setCollection(to collectionId: String, videoId: String) {
+        evaluateJavaScript(
+            "performPlayerCommand(function() { player.setCollection(\"\(collectionId)\", \"\(videoId)\"); })")
     }
 
     /*
