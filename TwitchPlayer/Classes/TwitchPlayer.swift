@@ -29,6 +29,8 @@ import WebKit
 /// - Note: You **cannot** load a Twitch Clip from this class.
 @IBDesignable public class TwitchPlayer: WKWebView {
 
+    // MARK: - Custom Data Types
+
     /// `PlayerTheme` specifies the potential color themes of a Twitch Player instance.
     ///
     /// - light: A Light theme
@@ -67,6 +69,15 @@ import WebKit
         case videoOnly = "video"
     }
 
+    // MARK: - Static Members
+
+    /// `isWebViewBackgroundOpaque` specifies whether the background of the web view this Clip Player is hosted in is
+    /// opaque or not.
+    private static let isWebViewBackgroundOpaque = false
+
+    /// `isWebViewScrollEnabled` specifies whether the web view this Clip Player is hosted in is scrollable or not.
+    private static let isWebViewScrollEnabled = false
+
     /// `jsonParameterDelimiter` is used to delimiter different parameters in JSON.
     private static let jsonParameterDelimiter = ","
 
@@ -89,7 +100,7 @@ import WebKit
 
             const embed = new Twitch.Embed('twitch-embed', {
                 width: '100%',
-                height: '100%',
+                height: '98%',
                 playsinline: true,
                 {0}
             });
@@ -184,7 +195,7 @@ import WebKit
     }
 
     /// `videoToLoad` specifies the video that should be loaded.
-    @IBInspectable private(set) var videoToLoad: String? = nil {
+    @IBInspectable private(set) var videoToLoad: String? {
         didSet {
             updateWebPlayer()
         }
@@ -239,6 +250,8 @@ import WebKit
 
         super.init(frame: frame, configuration: configuration)
 
+        scrollView.isScrollEnabled = TwitchPlayer.isWebViewScrollEnabled
+        isOpaque = TwitchPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
 
@@ -250,6 +263,8 @@ import WebKit
     override public init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
 
+        scrollView.isScrollEnabled = TwitchPlayer.isWebViewScrollEnabled
+        isOpaque = TwitchPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
 
@@ -259,6 +274,8 @@ import WebKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
+        scrollView.isScrollEnabled = TwitchPlayer.isWebViewScrollEnabled
+        isOpaque = TwitchPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
 

@@ -23,7 +23,7 @@
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojh-rG-T2u" customClass="TwitchClipPlayer" customModule="TwitchPlayer">
                                 <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ojh-rG-T2u" secondAttribute="height" multiplier="1080:720" id="U1O-xG-ZCx"/>
                                 </constraints>
@@ -33,6 +33,7 @@
                                 </wkWebViewConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="clipId" value="DelightfulSmellyDumplingsAsianGlow"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsFullScreen" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ej-Nd-kZc">

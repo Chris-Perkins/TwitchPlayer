@@ -39,6 +39,13 @@ import WebKit
 
     // MARK: - Static Members
 
+    /// `isWebViewBackgroundOpaque` specifies whether the background of the web view this Clip Player is hosted in is
+    /// opaque or not.
+    private static let isWebViewBackgroundOpaque = false
+
+    /// `isWebViewScrollEnabled` specifies whether the web view this Clip Player is hosted in is scrollable or not.
+    private static let isWebViewScrollEnabled = false
+
     /// `htmlParameterDelimiter` is used to delimiter different parameters in HTML.
     private static let htmlParameterDelimiter = "\n"
 
@@ -57,9 +64,11 @@ import WebKit
 """
 <iframe
     src="https://clips.twitch.tv/embed?clip=<slug>"
-    height="100%"
+    height="98%"
     width="100%"
     frameborder="0"
+    margin="0"
+    padding="0"
     {0}
 </iframe>
 """
@@ -145,6 +154,8 @@ import WebKit
 
         super.init(frame: frame, configuration: configuration)
 
+        scrollView.isScrollEnabled = TwitchClipPlayer.isWebViewScrollEnabled
+        isOpaque = TwitchClipPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
 
@@ -156,6 +167,8 @@ import WebKit
     override public init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
 
+        scrollView.isScrollEnabled = TwitchClipPlayer.isWebViewScrollEnabled
+        isOpaque = TwitchClipPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
 
@@ -165,6 +178,8 @@ import WebKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
+        scrollView.isScrollEnabled = TwitchClipPlayer.isWebViewScrollEnabled
+        isOpaque = TwitchClipPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
 
