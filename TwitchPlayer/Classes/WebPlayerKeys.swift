@@ -19,10 +19,11 @@ internal struct TwitchWebPlayerKeys {
     internal static let muted = "muted"
     internal static let preload = "preload"
     internal static let scrolling = "scrolling"
+    internal static let source = "src"
     internal static let theme = "theme"
     internal static let video = "video"
     internal static let width = "width"
-    
+
     /// Uninitializable
     private init() { }
 }

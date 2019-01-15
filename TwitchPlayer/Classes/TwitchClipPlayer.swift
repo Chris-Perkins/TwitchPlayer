@@ -51,7 +51,7 @@ import WebKit
     private static let isWebViewScrollEnabled = false
 
     /// `htmlParameterDelimiter` is used to delimiter different parameters in HTML.
-    private static let htmlParameterDelimiter = "\n"
+    private static let htmlParameterDelimiter = " "
 
     /// `htmlKeyValueDelimiter` is used to delimit a HTML key and value.
     private static let htmlKeyValueDelimiter = "="
@@ -60,21 +60,22 @@ import WebKit
     /// additional initialization properties.
     private static let initializationReplacementKey = "{0}"
 
-    /// `clipReplacementKey` specifies the String that should be replaced in `playerHtmlContent` to set the clip value.
-    private static let clipReplacementKey = "<slug>"
+    /// `clipBaseUrlAsString` is the base URL of the embedded Twitch URL.
+    private static let clipBaseUrlAsString = URL(string: "https://clips.twitch.tv/embed")!
 
     /// `playerHtmlContent` holds the HTML Content as a String regarding a Twitch Clip Embedded player.
     private static let playerHtmlContent =
 """
 <iframe
-    src="https://clips.twitch.tv/embed?clip=<slug>"
     height="98%"
     width="100%"
     frameborder="0"
     margin="0"
     padding="0"
+    autoplay="false"
+    preload="none"
     {0}
-</iframe>
+/>
 """
 
     // MARK: - IBInspectables
@@ -112,17 +113,6 @@ import WebKit
         }
     }
 
-    /// `allowsFullScreen` is a settable variable that determines if the Twitch Clip Player allows full screen. Default:
-    /// `true`
-    ///
-    /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
-    /// done after initialization.
-    @IBInspectable public var allowsFullScreen: Bool = true {
-        didSet {
-            updateWebPlayer()
-        }
-    }
-
     /// `clipId` is a settable variable that determines which clip will be loaded in this clip player. Default: `""`
     ///
     /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
@@ -140,16 +130,14 @@ import WebKit
     ///
     /// - Parameters:
     ///   - clipId: The ID of the clip to load
-    ///   - allowsFullScreen: Whether or not full screen is enabled on this clip
     ///   - scrollEnabled: Whether or not scroll is enabled on this clip
-    ///   - autoPlayEnabled: Whether or not the clip will autoplay on initialization
-    ///   - muteOnLoad: Whether or not the clip should be muted when it loads
+    ///   - autoPlayEnabled: Whether or not the clip will autoplay on initialization. Default: `false`
+    ///   - muteOnLoad: Whether or not the clip should be muted when it loads. Default: `true`
     ///   - frame: The frame of the web view
     ///   - configuration: The configuration of the web view to host the clip in
-    init(clipId: String, allowsFullScreen: Bool, scrollEnabled: Bool, autoPlayEnabled: Bool = false,
-         muteOnLoad: Bool = true, frame: CGRect, configuration: WKWebViewConfiguration) {
+    init(clipId: String, scrollEnabled: Bool, autoPlayEnabled: Bool = false, muteOnLoad: Bool = true,
+         frame: CGRect, configuration: WKWebViewConfiguration) {
         self.clipId = clipId
-        self.allowsFullScreen = allowsFullScreen
         self.scrollingEnabled = scrollEnabled
         self.autoPlayEnabled = autoPlayEnabled
         self.muteOnLoad = muteOnLoad
@@ -190,8 +178,7 @@ import WebKit
     /// `updateWebPlayer` will update the loaded Twitch Player with the current parameters of the Twitch Player.
     private func updateWebPlayer() {
         let playerHtml = getPlayerHtmlString(clipId: clipId, scrolling: scrollingEnabled ? .yes : .no,
-                                             allowsFullScreen: allowsFullScreen, autoplay: autoPlayEnabled,
-                                             muted: muteOnLoad)
+                                             autoplay: autoPlayEnabled, muted: muteOnLoad)
         loadHTMLString(playerHtml, baseURL: nil)
     }
 
@@ -201,32 +188,32 @@ import WebKit
     /// - Parameters:
     ///   - clipId: The ID of the clip to retrieve
     ///   - scrolling: The scroll setting for the clip
-    ///   - allowsFullScreen: Whether or not the clip can be full-screened
     ///   - autoplay: Whether or not the clip will autoplay
     ///   - muted: Whether or not the clip is muted
     /// - Returns: The HTML string that allows for embedded Twitch Clips.
-    private func getPlayerHtmlString(clipId: String, scrolling: ScrollingValues, allowsFullScreen: Bool,
-                                     autoplay: Bool?, muted: Bool?) -> String {
+    private func getPlayerHtmlString(clipId: String, scrolling: ScrollingValues, autoplay: Bool?,
+                                     muted: Bool?) -> String {
         var currentPlayerParameters = [String]()
+        var currentPlayerQueryParameters = [String: String]()
 
-        currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.allowsFullScreen,
-                                                              forValue: allowsFullScreen))
-        currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.scrolling,
-                                                              forValue: scrolling.rawValue))
         if let autoplay = autoplay {
-            currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.autoplay,
-                                                                  forValue: autoplay))
+            currentPlayerQueryParameters[TwitchWebPlayerKeys.autoplay] = "\(autoplay)"
         }
         if let muted = muted {
-            currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.muted,
-                                                                  forValue: muted))
+            currentPlayerQueryParameters[TwitchWebPlayerKeys.muted] = "\(muted)"
         }
+        currentPlayerQueryParameters[TwitchWebPlayerKeys.clip] = clipId
+        let queriedUrl = TwitchClipPlayer.clipBaseUrlAsString.withQueryItems(currentPlayerQueryParameters)
+
+        currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.source,
+                                                              forValue: queriedUrl.absoluteString))
+        currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.scrolling,
+                                                              forValue: scrolling.rawValue))
 
         return TwitchClipPlayer.playerHtmlContent
             .replacingOccurrences(
                 of: TwitchClipPlayer.initializationReplacementKey,
                 with: currentPlayerParameters.joined(separator: TwitchClipPlayer.htmlParameterDelimiter))
-            .replacingOccurrences(of: TwitchClipPlayer.clipReplacementKey, with: clipId)
     }
 
     /// `getHtmlParameterFormat` is used to convert a key-value mapping to its corresponding HTML format.
