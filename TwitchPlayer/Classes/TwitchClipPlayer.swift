@@ -80,23 +80,11 @@ import WebKit
 
     // MARK: - IBInspectables
 
-    /// `scrollingEnabled` is a settable variable that determines if the Twitch Clip Player allows scrolling. Default:
-    /// `false`
+    /// `clipId` is a settable variable that determines which clip will be loaded in this clip player. Default: `""`
     ///
     /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
     /// done after initialization.
-    @IBInspectable public var scrollingEnabled: Bool = false {
-        didSet {
-            updateWebPlayer()
-        }
-    }
-
-    /// `muteOnLoad` is a settable variable that determines if a Twitch Clip Player will be muted upon initialization.
-    /// Default: `false`
-    ///
-    /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
-    /// done after initialization.
-    @IBInspectable public var muteOnLoad: Bool = false {
+    @IBInspectable public var clipId: String = "" {
         didSet {
             updateWebPlayer()
         }
@@ -113,11 +101,23 @@ import WebKit
         }
     }
 
-    /// `clipId` is a settable variable that determines which clip will be loaded in this clip player. Default: `""`
+    /// `muteOnLoad` is a settable variable that determines if a Twitch Clip Player will be muted upon initialization.
+    /// Default: `false`
     ///
     /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
     /// done after initialization.
-    @IBInspectable public var clipId: String = "" {
+    @IBInspectable public var muteOnLoad: Bool = false {
+        didSet {
+            updateWebPlayer()
+        }
+    }
+
+    /// `scrollingEnabled` is a settable variable that determines if the Twitch Clip Player allows scrolling. Default:
+    /// `false`
+    ///
+    /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+    /// done after initialization.
+    @IBInspectable public var scrollingEnabled: Bool = false {
         didSet {
             updateWebPlayer()
         }
@@ -130,7 +130,10 @@ import WebKit
         }
     }
 
-    /// `preloadSetting` specifies whether or not this Clip Player should preload the loaded clip.
+    /// `preloadSetting` specifies whether or not this Clip Player should preload the loaded clip. Default: `.auto`.
+    ///
+    /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+    /// done after initialization.
     public var preloadSetting: PreloadSettings = .auto {
         didSet {
             updateWebPlayer()

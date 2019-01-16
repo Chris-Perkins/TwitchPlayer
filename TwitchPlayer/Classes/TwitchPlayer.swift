@@ -127,6 +127,37 @@ import WebKit
 </html>
 """
 
+    /// `videoToLoad` specifies the video that should be loaded.
+    ///
+    /// - Warning: Setting this reloads the Web Player. This may cause un-polished behavior, and generally should
+    /// not be done after initialization. To avoid this behavior, please use the `setVideo` method.
+    @IBInspectable private(set) var videoToLoad: String? {
+        didSet {
+            updateWebPlayer()
+        }
+    }
+
+    /// `channelId` specifies the name of the channel that should be watched.
+    ///
+    /// - Warning: Setting this reloads the Web Player. This may cause un-polished behavior, and generally should
+    /// not be done after initialization. To avoid this behavior, please use the `setChannel` method.
+    @IBInspectable private(set) var channelToLoad: String? {
+        didSet {
+            updateWebPlayer()
+        }
+    }
+    
+    /// `collectionToLoad` specifies the collection that should be loaded.
+    ///
+    /// - Warning: You **must** specify `videoToLoad` or the player will not work.
+    /// - Warning: Setting this reloads the Web Player. This may cause un-polished behavior, and generally should
+    /// not be done after initialization. To avoid this behavior, please use the `setCollection` method.
+    @IBInspectable private(set) var collectionToLoad: String? {
+        didSet {
+            updateWebPlayer()
+        }
+    }
+    
     /// `showsChatPanel` specifies if the chat panel is shown.
     ///
     /// - Warning: This variable is only for initialization. For correct values, please use `playerLayout` instead.
@@ -189,29 +220,6 @@ import WebKit
     /// - Warning: Setting this reloads the Web Player. This may cause un-polished behavior, and generally should
     /// not be done after initialization.
     public var playerTheme: PlayerTheme? = .dark {
-        didSet {
-            updateWebPlayer()
-        }
-    }
-
-    /// `videoToLoad` specifies the video that should be loaded.
-    @IBInspectable private(set) var videoToLoad: String? {
-        didSet {
-            updateWebPlayer()
-        }
-    }
-
-    /// `channelId` specifies the name of the channel that should be watched.
-    @IBInspectable private(set) var channelToLoad: String? {
-        didSet {
-            updateWebPlayer()
-        }
-    }
-
-    /// `collectionToLoad` specifies the collection that should be loaded.
-    ///
-    /// - Warning: You **must** specify `videoToLoad` or the player will not work.
-    @IBInspectable private(set) var collectionToLoad: String? {
         didSet {
             updateWebPlayer()
         }
