@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TwitchClipPlayer Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/TwitchClipPlayer" class="dashAnchor"></a>
+    <a title="TwitchClipPlayer Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">TwitchPlayer Docs</a> (67% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">TwitchPlayer Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        TwitchClipPlayer Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/TwitchClipPlayer.html">TwitchClipPlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TwitchClipPlayer/PreloadSettings.html">– PreloadSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TwitchPlayer.html">TwitchPlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TwitchPlayer/PlayerTheme.html">– PlayerTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TwitchPlayer/ChatDisplayMode.html">– ChatDisplayMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TwitchPlayer/PlayerChatFontSize.html">– PlayerChatFontSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TwitchPlayer/PlayerLayout.html">– PlayerLayout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>TwitchClipPlayer</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">@IBDesignable</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">TwitchClipPlayer</span> <span class="p">:</span> <span class="kt">WKWebView</span></code></pre>
+
+                </div>
+              </div>
+            <p><code>TwitchClipPlayer</code> is a class that allows for the encapsulation of the loading of a non-interactive Twitch Clip
+Embedded Player as specified by the Twitch Documentation.</p>
+
+<p>In this class, you can modify the following variables:</p>
+
+<ul>
+<li><code>clipId</code> - The ID of the Clip to Play</li>
+<li><code>scrollingEnabled</code>: Whether or not scroll is enabled on this clip</li>
+<li><code>autoPlayEnabled</code>: Whether or not the clip will autoplay on initialization</li>
+<li><code>muteOnLoad</code>: Whether or not the clip should be muted when it loads</li>
+<li><code>preloadSetting</code>: Whether or not this clip should preload.</li>
+</ul>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Custom%20Data%20Types"></a>
+                <a name="//apple_ref/swift/Section/Custom Data Types" class="dashAnchor"></a>
+                <a href="#/Custom%20Data%20Types">
+                  <h3 class="section-name">Custom Data Types</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12TwitchPlayer0a4ClipB0C15PreloadSettingsO"></a>
+                    <a name="//apple_ref/swift/Enum/PreloadSettings" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12TwitchPlayer0a4ClipB0C15PreloadSettingsO">PreloadSettings</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>PreloadSettings</code> defines the different types of settings that are available</p>
+
+<ul>
+<li>none: No preloading should occur</li>
+<li>metadata: Only clip metadata should be preloaded</li>
+<li>auto: The clip will be preloaded</li>
+</ul>
+
+                        <a href="../Classes/TwitchClipPlayer/PreloadSettings.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">PreloadSettings</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/IBInspectables"></a>
+                <a name="//apple_ref/swift/Section/IBInspectables" class="dashAnchor"></a>
+                <a href="#/IBInspectables">
+                  <h3 class="section-name">IBInspectables</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(py)clipId"></a>
+                    <a name="//apple_ref/swift/Property/clipId" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(py)clipId">clipId</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>clipId</code> is a settable variable that determines which clip will be loaded in this clip player. Default: <code>&quot;&quot;</code></p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+done after initialization.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBInspectable</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">clipId</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(py)autoPlayEnabled"></a>
+                    <a name="//apple_ref/swift/Property/autoPlayEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(py)autoPlayEnabled">autoPlayEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>autoPlayEnabled</code> is a settable variable that determines if a Twitch Clip Player plays automatically upon
+initialization. Default: <code>false</code></p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+done after initialization.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBInspectable</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">autoPlayEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(py)muteOnLoad"></a>
+                    <a name="//apple_ref/swift/Property/muteOnLoad" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(py)muteOnLoad">muteOnLoad</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>muteOnLoad</code> is a settable variable that determines if a Twitch Clip Player will be muted upon initialization.
+Default: <code>false</code></p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+done after initialization.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBInspectable</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">muteOnLoad</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(py)scrollingEnabled"></a>
+                    <a name="//apple_ref/swift/Property/scrollingEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(py)scrollingEnabled">scrollingEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>scrollingEnabled</code> is a settable variable that determines if the Twitch Clip Player allows scrolling. Default:
+<code>false</code></p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+done after initialization.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBInspectable</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">scrollingEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12TwitchPlayer0a4ClipB0C14preloadSettingAC15PreloadSettingsOvp"></a>
+                    <a name="//apple_ref/swift/Property/preloadSetting" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12TwitchPlayer0a4ClipB0C14preloadSettingAC15PreloadSettingsOvp">preloadSetting</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>preloadSetting</code> specifies whether or not this Clip Player should preload the loaded clip. Default: <code>.auto</code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+done after initialization.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">preloadSetting</span><span class="p">:</span> <span class="kt">TwitchClipPlayer</span><span class="o">.</span><span class="kt"><a href="../Classes/TwitchClipPlayer/PreloadSettings.html">PreloadSettings</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Life%20Cycle"></a>
+                <a name="//apple_ref/swift/Section/Life Cycle" class="dashAnchor"></a>
+                <a href="#/Life%20Cycle">
+                  <h3 class="section-name">Life Cycle</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(im)initWithFrame:configuration:"></a>
+                    <a name="//apple_ref/swift/Method/init(frame:configuration:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer(im)initWithFrame:configuration:">init(frame:configuration:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a TwitchPlayer with the specified frame and configuration.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">,</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">WKWebViewConfiguration</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>frame</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The frame to initialize with</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The configuration to initialize with</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/chrisfromtemporaryid@gmail.com/TwitchPlayer" target="_blank" rel="external">chrisfromtemporaryid@gmail.com</a>. All rights reserved. (Last updated: 2019-01-16)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

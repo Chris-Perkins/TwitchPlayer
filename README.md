@@ -31,6 +31,11 @@ An example project is provided with this project that shows the storyboard-creat
 
 To run the example project, clone the repo, and run `pod install` from the Example directory. After that, open the resulting `.xcworkspace` file and go nuts!
 
+## Documentation
+
+[Documentation available here](https://htmlpreview.github.io/?https://github.com/Chris-Perkins/TwitchPlayer/blob/master/docs/index.html)
+
+- If the documentation is not loading, clone this repository and open `docs/index.html`.
 
 ## Installation
 

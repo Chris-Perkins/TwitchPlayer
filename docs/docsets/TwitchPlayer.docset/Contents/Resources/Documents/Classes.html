@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Classes  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Classes" class="dashAnchor"></a>
+    <a title="Classes  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">TwitchPlayer Docs</a> (67% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">TwitchPlayer Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Classes  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/TwitchClipPlayer.html">TwitchClipPlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TwitchClipPlayer/PreloadSettings.html">– PreloadSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TwitchPlayer.html">TwitchPlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TwitchPlayer/PlayerTheme.html">– PlayerTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TwitchPlayer/ChatDisplayMode.html">– ChatDisplayMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TwitchPlayer/PlayerChatFontSize.html">– PlayerChatFontSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TwitchPlayer/PlayerLayout.html">– PlayerLayout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Classes</h1>
+            <p>The following classes are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer"></a>
+                    <a name="//apple_ref/swift/Class/TwitchClipPlayer" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@TwitchPlayer@objc(cs)TwitchClipPlayer">TwitchClipPlayer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>TwitchClipPlayer</code> is a class that allows for the encapsulation of the loading of a non-interactive Twitch Clip
+Embedded Player as specified by the Twitch Documentation.</p>
+
+<p>In this class, you can modify the following variables:</p>
+
+<ul>
+<li><code>clipId</code> - The ID of the Clip to Play</li>
+<li><code>scrollingEnabled</code>: Whether or not scroll is enabled on this clip</li>
+<li><code>autoPlayEnabled</code>: Whether or not the clip will autoplay on initialization</li>
+<li><code>muteOnLoad</code>: Whether or not the clip should be muted when it loads</li>
+<li><code>preloadSetting</code>: Whether or not this clip should preload.</li>
+</ul>
+
+                        <a href="Classes/TwitchClipPlayer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBDesignable</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">TwitchClipPlayer</span> <span class="p">:</span> <span class="kt">WKWebView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@TwitchPlayer@objc(cs)TwitchPlayer"></a>
+                    <a name="//apple_ref/swift/Class/TwitchPlayer" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@TwitchPlayer@objc(cs)TwitchPlayer">TwitchPlayer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>TwitchPlayer</code> is an embeddable Twitch Web Player. You can play Twitch Streams and Videos from a <code>TwitchPlayer</code>
+instance.</p>
+
+<p>You can edit the following properties of the TwitchPlayer from the Storyboard and an Initializing function:</p>
+
+<ul>
+<li>Layout</li>
+<li>Theme</li>
+<li>Chat Mode</li>
+<li>Allows Full Screen</li>
+<li>Channel To View</li>
+<li>Video To View</li>
+<li>Collection to View</li>
+</ul>
+
+<p>You can edit the following after the TwitchPlayer loads successfully:</p>
+<li>viewedChannel - <code>setChannel(to: String)</code></li>
+<li>viewedVideo - <code>setVideo(to: String, timestamp: Float)</code></li>
+<li>viewedCollection - <code>setCollection(to: String, videoId: String)</code></li>
+<li>volume - <code>setVolume(to: Float)</code></li>
+<li><p>pause state - <code>pause()</code>, <code>play()</code>, <code>togglePlaybackState()</code></p></li>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>You <strong>cannot</strong> load a Twitch Clip from this class.</p>
+
+</div>
+
+                        <a href="Classes/TwitchPlayer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@IBDesignable</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">TwitchPlayer</span> <span class="p">:</span> <span class="kt">WKWebView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2019 <a class="link" href="https://github.com/chrisfromtemporaryid@gmail.com/TwitchPlayer" target="_blank" rel="external">chrisfromtemporaryid@gmail.com</a>. All rights reserved. (Last updated: 2019-01-16)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
