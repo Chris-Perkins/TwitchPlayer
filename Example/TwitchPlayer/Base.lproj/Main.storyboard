@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w7Z-5F-SX8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,60 +9,352 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="rfI-XT-xNF">
+            <objects>
+                <navigationController id="w7Z-5F-SX8" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="lB8-i1-E3x">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.3921568627" green="0.25490196079999999" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="QGR-xB-rz3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iaU-br-Dih" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1495" y="89"/>
+        </scene>
+        <!--Twitch Player Demo-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="TwitchPlayer_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ojh-rG-T2u" customClass="TwitchClipPlayer" customModule="TwitchPlayer">
-                                <rect key="frame" x="37.5" y="233.5" width="300" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dbc-F6-wxy">
+                                <rect key="frame" x="37.5" y="129" width="300" height="241"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KI-6q-jl9">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="75"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Stream Player">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="IwC-lg-MoV" kind="show" id="273-6D-CKy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsT-eI-ABO">
+                                        <rect key="frame" x="0.0" y="80" width="300" height="75"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Video Player">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Z3m-Yi-y92" kind="show" id="8Kp-ra-GeY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W93-nB-lEQ">
+                                        <rect key="frame" x="0.0" y="160" width="300" height="81"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Clip Player">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="CGh-b8-pq9" kind="show" id="GHG-fi-GYj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ojh-rG-T2u" secondAttribute="height" multiplier="1080:720" id="U1O-xG-ZCx"/>
+                                    <constraint firstItem="nsT-eI-ABO" firstAttribute="height" secondItem="Dbc-F6-wxy" secondAttribute="height" multiplier="0.33" constant="-5" id="634-Lo-tcd"/>
+                                    <constraint firstItem="4KI-6q-jl9" firstAttribute="height" secondItem="Dbc-F6-wxy" secondAttribute="height" multiplier="0.333" constant="-5" id="hWi-jV-X0x"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.60392156860000001" green="0.4039215686" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dbc-F6-wxy" firstAttribute="height" secondItem="kh9-bI-dsS" secondAttribute="height" multiplier="0.4" id="5s5-u1-6gZ"/>
+                            <constraint firstItem="Dbc-F6-wxy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="899-Aj-bSz"/>
+                            <constraint firstItem="Dbc-F6-wxy" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.8" id="V60-je-FtE"/>
+                            <constraint firstItem="Dbc-F6-wxy" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" priority="999" constant="-52" id="VEx-RR-9nl"/>
+                            <constraint firstItem="Dbc-F6-wxy" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="hea-sy-pD5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Twitch Player Demo" id="bgM-wD-YLh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-705" y="89"/>
+        </scene>
+        <!--Stream Player-->
+        <scene sceneID="vaR-T4-1eU">
+            <objects>
+                <viewController title="Stream Player" id="IwC-lg-MoV" customClass="TwitchStreamPlayerViewController" customModule="TwitchPlayer_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VQU-w0-dUC"/>
+                        <viewControllerLayoutGuide type="bottom" id="aNG-TH-PLF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xnI-vP-woa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tM-zR-6Ol" customClass="TwitchPlayer" customModule="TwitchPlayer">
+                                <rect key="frame" x="37.5" y="139" width="300" height="225"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9tM-zR-6Ol" secondAttribute="height" multiplier="4:3" id="MEH-1S-sYG"/>
                                 </constraints>
                                 <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="clipId" value="DelightfulSmellyDumplingsAsianGlow"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="muteOnLoad" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoPlayEnabled" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="preloadEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="channelToLoad" value="monstercat"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showingChatPanel" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="playerThemeIsDark" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsFullScreen" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </wkWebView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ej-Nd-kZc">
-                                <rect key="frame" x="37.5" y="441.5" width="300" height="30"/>
-                                <state key="normal" title="Pause"/>
-                                <connections>
-                                    <action selector="pausePressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="md0-jy-gSy"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="G8q-TN-nZt">
+                                <rect key="frame" x="37.5" y="364" width="300" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y86-dl-Yps">
+                                        <rect key="frame" x="0.0" y="0.0" width="99" height="40"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="▷">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="togglePlaybackPress:" destination="IwC-lg-MoV" eventType="touchUpInside" id="vud-X9-ve2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csF-4X-f4v">
+                                        <rect key="frame" x="101" y="0.0" width="199" height="40"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nextButtonPress:" destination="IwC-lg-MoV" eventType="touchUpInside" id="cWa-8M-XMW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="AkW-PH-kJw"/>
+                                    <constraint firstItem="Y86-dl-Yps" firstAttribute="width" secondItem="G8q-TN-nZt" secondAttribute="width" multiplier="0.33" id="wbJ-yx-cK7"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.60392156860000001" green="0.4039215686" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ojh-rG-T2u" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="1J8-3a-b7Y"/>
-                            <constraint firstItem="ojh-rG-T2u" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.8" priority="999" id="3Tc-gY-k8D"/>
-                            <constraint firstItem="0Ej-Nd-kZc" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="GKZ-ej-W5l"/>
-                            <constraint firstItem="ojh-rG-T2u" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Gk3-RZ-Tb2"/>
-                            <constraint firstItem="0Ej-Nd-kZc" firstAttribute="width" secondItem="ojh-rG-T2u" secondAttribute="width" id="N4p-CI-2Rt"/>
-                            <constraint firstItem="0Ej-Nd-kZc" firstAttribute="top" secondItem="ojh-rG-T2u" secondAttribute="bottom" constant="8" id="bBg-Ie-KUO"/>
-                            <constraint firstItem="ojh-rG-T2u" firstAttribute="height" relation="lessThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="height" multiplier="0.8" id="gaJ-8i-11N"/>
+                            <constraint firstItem="9tM-zR-6Ol" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VQU-w0-dUC" secondAttribute="bottom" constant="8" id="1JH-vx-Hjd"/>
+                            <constraint firstItem="9tM-zR-6Ol" firstAttribute="centerX" secondItem="xnI-vP-woa" secondAttribute="centerX" id="5j5-yy-tq0"/>
+                            <constraint firstItem="9tM-zR-6Ol" firstAttribute="height" relation="lessThanOrEqual" secondItem="xnI-vP-woa" secondAttribute="height" constant="-56" id="7ca-xJ-fA0"/>
+                            <constraint firstItem="9tM-zR-6Ol" firstAttribute="centerY" secondItem="xnI-vP-woa" secondAttribute="centerY" priority="999" constant="-50" id="Hhf-0q-qDT"/>
+                            <constraint firstItem="G8q-TN-nZt" firstAttribute="trailing" secondItem="9tM-zR-6Ol" secondAttribute="trailing" id="O7j-aP-ckx"/>
+                            <constraint firstItem="9tM-zR-6Ol" firstAttribute="width" secondItem="xnI-vP-woa" secondAttribute="width" multiplier="0.8" priority="999" id="pT9-SX-r1o"/>
+                            <constraint firstItem="G8q-TN-nZt" firstAttribute="top" secondItem="9tM-zR-6Ol" secondAttribute="bottom" id="qyY-Jh-6zu"/>
+                            <constraint firstItem="G8q-TN-nZt" firstAttribute="leading" secondItem="9tM-zR-6Ol" secondAttribute="leading" id="uEG-HQ-EEG"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="twitchPlayer" destination="ojh-rG-T2u" id="vMO-En-Afg"/>
+                        <outlet property="twitchPlayer" destination="9tM-zR-6Ol" id="8oG-Ku-S1D"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M61-bl-KJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="58" y="-375"/>
+        </scene>
+        <!--Video Player-->
+        <scene sceneID="O45-Vn-fkq">
+            <objects>
+                <viewController title="Video Player" id="Z3m-Yi-y92" customClass="TwitchVideoPlayerViewController" customModule="TwitchPlayer_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BR0-NA-Y1H"/>
+                        <viewControllerLayoutGuide type="bottom" id="uNn-7w-lkA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Prn-rN-2ca">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNl-Ch-bte" customClass="TwitchPlayer" customModule="TwitchPlayer">
+                                <rect key="frame" x="37.5" y="139" width="300" height="225"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bNl-Ch-bte" secondAttribute="height" multiplier="4:3" id="pIp-qA-ZW2"/>
+                                </constraints>
+                                <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showingChatPanel" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="playerThemeIsDark" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsFullScreen" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="videoToLoad" value="356414012"/>
+                                </userDefinedRuntimeAttributes>
+                            </wkWebView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Xai-q4-z9p">
+                                <rect key="frame" x="37.5" y="364" width="300" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyS-Db-3Ky">
+                                        <rect key="frame" x="0.0" y="0.0" width="99" height="40"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="▷">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="togglePlaybackPress:" destination="Z3m-Yi-y92" eventType="touchUpInside" id="AXQ-Xo-kIC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wv6-Hh-GBD">
+                                        <rect key="frame" x="101" y="0.0" width="199" height="40"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nextButtonPress:" destination="Z3m-Yi-y92" eventType="touchUpInside" id="Tzx-Sg-k0a"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="NyS-Db-3Ky" firstAttribute="width" secondItem="Xai-q4-z9p" secondAttribute="width" multiplier="0.33" id="RYL-Fq-iCD"/>
+                                    <constraint firstAttribute="height" constant="40" id="XBs-1Z-gIZ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.60392156860000001" green="0.4039215686" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="bNl-Ch-bte" firstAttribute="centerX" secondItem="Prn-rN-2ca" secondAttribute="centerX" id="KBO-eg-IG9"/>
+                            <constraint firstItem="Xai-q4-z9p" firstAttribute="top" secondItem="bNl-Ch-bte" secondAttribute="bottom" id="Zew-wG-0iH"/>
+                            <constraint firstItem="bNl-Ch-bte" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BR0-NA-Y1H" secondAttribute="bottom" constant="8" id="bif-hv-Z9F"/>
+                            <constraint firstItem="bNl-Ch-bte" firstAttribute="width" secondItem="Prn-rN-2ca" secondAttribute="width" multiplier="0.8" priority="999" id="gIl-Rb-oXl"/>
+                            <constraint firstItem="Xai-q4-z9p" firstAttribute="trailing" secondItem="bNl-Ch-bte" secondAttribute="trailing" id="gem-Ub-PGD"/>
+                            <constraint firstItem="bNl-Ch-bte" firstAttribute="centerY" secondItem="Prn-rN-2ca" secondAttribute="centerY" priority="999" constant="-50" id="oiM-oY-aKr"/>
+                            <constraint firstItem="bNl-Ch-bte" firstAttribute="height" relation="lessThanOrEqual" secondItem="Prn-rN-2ca" secondAttribute="height" constant="-106" id="r5E-gv-9w0"/>
+                            <constraint firstItem="Xai-q4-z9p" firstAttribute="leading" secondItem="bNl-Ch-bte" secondAttribute="leading" id="rUs-iW-Liv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="twitchPlayer" destination="bNl-Ch-bte" id="oVT-Yg-vkq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Tu-Zf-Zat" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785" y="89"/>
+        </scene>
+        <!--Clip Player-->
+        <scene sceneID="IuZ-Hu-LzE">
+            <objects>
+                <viewController title="Clip Player" id="CGh-b8-pq9" customClass="TwitchClipPlayerViewController" customModule="TwitchPlayer_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1zi-GC-WGE"/>
+                        <viewControllerLayoutGuide type="bottom" id="vY1-2V-cLh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Vb-9C-mev">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyG-P5-kPx" customClass="TwitchClipPlayer" customModule="TwitchPlayer">
+                                <rect key="frame" x="37.5" y="139" width="300" height="225"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PyG-P5-kPx" secondAttribute="height" multiplier="4:3" id="NCf-8e-nAN"/>
+                                </constraints>
+                                <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoPlayEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="muteOnLoad" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="preloadEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="clipId" value="ApatheticStupidDuckDendiFace"/>
+                                </userDefinedRuntimeAttributes>
+                            </wkWebView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="m8l-Gt-aIr">
+                                <rect key="frame" x="37.5" y="364" width="300" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSa-EY-hvR">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.47058823529999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nextButtonPress:" destination="CGh-b8-pq9" eventType="touchUpInside" id="MPC-IE-iUv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Fiv-AK-yh0"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.60392156860000001" green="0.4039215686" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="m8l-Gt-aIr" firstAttribute="leading" secondItem="PyG-P5-kPx" secondAttribute="leading" id="9mG-qZ-1bi"/>
+                            <constraint firstItem="PyG-P5-kPx" firstAttribute="width" secondItem="3Vb-9C-mev" secondAttribute="width" multiplier="0.8" priority="999" id="9mj-kx-4NK"/>
+                            <constraint firstItem="m8l-Gt-aIr" firstAttribute="trailing" secondItem="PyG-P5-kPx" secondAttribute="trailing" id="Azl-4U-HjJ"/>
+                            <constraint firstItem="PyG-P5-kPx" firstAttribute="height" relation="lessThanOrEqual" secondItem="3Vb-9C-mev" secondAttribute="height" constant="-56" id="ILS-MK-Thv"/>
+                            <constraint firstItem="PyG-P5-kPx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1zi-GC-WGE" secondAttribute="bottom" constant="8" id="WLq-TU-CeQ"/>
+                            <constraint firstItem="PyG-P5-kPx" firstAttribute="centerY" secondItem="3Vb-9C-mev" secondAttribute="centerY" priority="999" constant="-50" id="avx-PW-Nup"/>
+                            <constraint firstItem="PyG-P5-kPx" firstAttribute="centerX" secondItem="3Vb-9C-mev" secondAttribute="centerX" id="xEq-3p-K0X"/>
+                            <constraint firstItem="m8l-Gt-aIr" firstAttribute="top" secondItem="PyG-P5-kPx" secondAttribute="bottom" id="yZw-J1-aOp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="clipPlayer" destination="PyG-P5-kPx" id="4Rj-50-fBg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7rq-Hp-fYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="57" y="821"/>
         </scene>
     </scenes>
 </document>
