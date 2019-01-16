@@ -1,0 +1,89 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchClipPlayer.swift",
+      "line": 39,
+      "symbol": "TwitchClipPlayer.PreloadSettings.none",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchClipPlayer.swift",
+      "line": 40,
+      "symbol": "TwitchClipPlayer.PreloadSettings.metadata",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchClipPlayer.swift",
+      "line": 41,
+      "symbol": "TwitchClipPlayer.PreloadSettings.auto",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 39,
+      "symbol": "TwitchPlayer.PlayerTheme.light",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 40,
+      "symbol": "TwitchPlayer.PlayerTheme.dark",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 48,
+      "symbol": "TwitchPlayer.ChatDisplayMode.defaultMode",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 49,
+      "symbol": "TwitchPlayer.ChatDisplayMode.mobile",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 58,
+      "symbol": "TwitchPlayer.PlayerChatFontSize.small",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 59,
+      "symbol": "TwitchPlayer.PlayerChatFontSize.medium",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 60,
+      "symbol": "TwitchPlayer.PlayerChatFontSize.large",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 68,
+      "symbol": "TwitchPlayer.PlayerLayout.videoWithChat",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/chrisperkins/Desktop/TwitchPlayer/TwitchPlayer/Classes/TwitchPlayer.swift",
+      "line": 69,
+      "symbol": "TwitchPlayer.PlayerLayout.videoOnly",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/chrisperkins/Desktop/TwitchPlayer"
+}
