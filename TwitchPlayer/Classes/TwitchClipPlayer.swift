@@ -12,10 +12,10 @@ import WebKit
 ///
 /// In this class, you can modify the following variables:
 /// * `clipId` - The ID of the Clip to Play
-/// * `allowsFullScreen`: Whether or not full screen is enabled on this clip
 /// * `scrollingEnabled`: Whether or not scroll is enabled on this clip
 /// * `autoPlayEnabled`: Whether or not the clip will autoplay on initialization
 /// * `muteOnLoad`: Whether or not the clip should be muted when it loads
+/// * `preloadSetting`: Whether or not this clip should preload.
 @IBDesignable public class TwitchClipPlayer: WKWebView {
 
     // MARK: - Custom Data Types
@@ -123,8 +123,21 @@ import WebKit
         }
     }
 
-    // MARK: - Life Cycle
+    /// `preloadEnabled` is an IBInspectable that will set `preloadSetting` upon set.
+    @IBInspectable private var preloadEnabled: Bool = true {
+        didSet {
+            preloadSetting = preloadEnabled ? .auto : .none
+        }
+    }
 
+    /// `preloadSetting` specifies whether or not this Clip Player should preload the loaded clip.
+    public var preloadSetting: PreloadSettings = .auto {
+        didSet {
+            updateWebPlayer()
+        }
+    }
+
+    // MARK: - Life Cycle
 
     /// Initializes a Twitch Clip Player with the input parameters.
     ///
@@ -133,14 +146,16 @@ import WebKit
     ///   - scrollEnabled: Whether or not scroll is enabled on this clip
     ///   - autoPlayEnabled: Whether or not the clip will autoplay on initialization. Default: `false`
     ///   - muteOnLoad: Whether or not the clip should be muted when it loads. Default: `true`
+    ///   - preloadSetting: Whether or not this Clip Player should pre-load the view. Default: `.auto`
     ///   - frame: The frame of the web view
     ///   - configuration: The configuration of the web view to host the clip in
     init(clipId: String, scrollEnabled: Bool, autoPlayEnabled: Bool = false, muteOnLoad: Bool = true,
-         frame: CGRect, configuration: WKWebViewConfiguration) {
+         preloadSetting: PreloadSettings = .auto, frame: CGRect, configuration: WKWebViewConfiguration) {
         self.clipId = clipId
         self.scrollingEnabled = scrollEnabled
         self.autoPlayEnabled = autoPlayEnabled
         self.muteOnLoad = muteOnLoad
+        self.preloadSetting = preloadSetting
 
         super.init(frame: frame, configuration: configuration)
 
@@ -178,7 +193,8 @@ import WebKit
     /// `updateWebPlayer` will update the loaded Twitch Player with the current parameters of the Twitch Player.
     private func updateWebPlayer() {
         let playerHtml = getPlayerHtmlString(clipId: clipId, scrolling: scrollingEnabled ? .yes : .no,
-                                             autoplay: autoPlayEnabled, muted: muteOnLoad)
+                                             preloadSetting: preloadSetting, autoplay: autoPlayEnabled,
+                                             muted: muteOnLoad)
         loadHTMLString(playerHtml, baseURL: nil)
     }
 
@@ -188,11 +204,12 @@ import WebKit
     /// - Parameters:
     ///   - clipId: The ID of the clip to retrieve
     ///   - scrolling: The scroll setting for the clip
+    ///   - preloadSetting: Specifies the type of preloading that should occur.
     ///   - autoplay: Whether or not the clip will autoplay
     ///   - muted: Whether or not the clip is muted
     /// - Returns: The HTML string that allows for embedded Twitch Clips.
-    private func getPlayerHtmlString(clipId: String, scrolling: ScrollingValues, autoplay: Bool?,
-                                     muted: Bool?) -> String {
+    private func getPlayerHtmlString(clipId: String, scrolling: ScrollingValues, preloadSetting: PreloadSettings,
+                                     autoplay: Bool?, muted: Bool?) -> String {
         var currentPlayerParameters = [String]()
         var currentPlayerQueryParameters = [String: String]()
 
@@ -205,6 +222,8 @@ import WebKit
         currentPlayerQueryParameters[TwitchWebPlayerKeys.clip] = clipId
         let queriedUrl = TwitchClipPlayer.clipBaseUrlAsString.withQueryItems(currentPlayerQueryParameters)
 
+        currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.preload,
+                                                              forValue: preloadSetting.rawValue))
         currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.source,
                                                               forValue: queriedUrl.absoluteString))
         currentPlayerParameters.append(getHtmlParameterFormat(forKey: TwitchWebPlayerKeys.scrolling,

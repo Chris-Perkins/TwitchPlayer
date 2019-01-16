@@ -35,6 +35,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="clipId" value="DelightfulSmellyDumplingsAsianGlow"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="muteOnLoad" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="autoPlayEnabled" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="preloadEnabled" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ej-Nd-kZc">
