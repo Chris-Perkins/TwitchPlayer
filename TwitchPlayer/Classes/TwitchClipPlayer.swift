@@ -112,6 +112,17 @@ import WebKit
         }
     }
 
+    /// `allowsFullScreen` is a settable variable that determines if a Twitch Clip Player will allow full screen.
+    /// Default: `true`
+    ///
+    /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+    /// done after initialization.
+    @IBInspectable public var allowsFullScreen: Bool = true {
+        didSet {
+            updateWebPlayer()
+        }
+    }
+
     /// `scrollingEnabled` is a settable variable that determines if the Twitch Clip Player allows scrolling. Default:
     /// `false`
     ///
@@ -146,19 +157,22 @@ import WebKit
     ///
     /// - Parameters:
     ///   - clipId: The ID of the clip to load
-    ///   - scrollEnabled: Whether or not scroll is enabled on this clip
     ///   - autoPlayEnabled: Whether or not the clip will autoplay on initialization. Default: `false`
     ///   - muteOnLoad: Whether or not the clip should be muted when it loads. Default: `true`
+    ///   - allowsFullScreen: Whether or not full screen should be allowed.
     ///   - preloadSetting: Whether or not this Clip Player should pre-load the view. Default: `.auto`
+    ///   - scrollEnabled: Whether or not scroll is enabled on this clip
     ///   - frame: The frame of the web view
     ///   - configuration: The configuration of the web view to host the clip in
-    init(clipId: String, scrollEnabled: Bool, autoPlayEnabled: Bool = false, muteOnLoad: Bool = true,
-         preloadSetting: PreloadSettings = .auto, frame: CGRect, configuration: WKWebViewConfiguration) {
+    init(clipId: String, autoPlayEnabled: Bool = false, muteOnLoad: Bool = true, allowsFullScreen: Bool,
+         preloadSetting: PreloadSettings = .auto, scrollEnabled: Bool, frame: CGRect,
+         configuration: WKWebViewConfiguration) {
         self.clipId = clipId
-        self.scrollingEnabled = scrollEnabled
         self.autoPlayEnabled = autoPlayEnabled
         self.muteOnLoad = muteOnLoad
+        self.allowsFullScreen = allowsFullScreen
         self.preloadSetting = preloadSetting
+        self.scrollingEnabled = scrollEnabled
 
         super.init(frame: frame, configuration: configuration)
 
@@ -196,8 +210,8 @@ import WebKit
     /// `updateWebPlayer` will update the loaded Twitch Player with the current parameters of the Twitch Player.
     private func updateWebPlayer() {
         let playerHtml = getPlayerHtmlString(clipId: clipId, scrolling: scrollingEnabled ? .yes : .no,
-                                             preloadSetting: preloadSetting, autoplay: autoPlayEnabled,
-                                             muted: muteOnLoad)
+                                             allowFullScreen: allowsFullScreen, preloadSetting: preloadSetting,
+                                             autoplay: autoPlayEnabled, muted: muteOnLoad)
         loadHTMLString(playerHtml, baseURL: nil)
     }
 
@@ -207,12 +221,13 @@ import WebKit
     /// - Parameters:
     ///   - clipId: The ID of the clip to retrieve
     ///   - scrolling: The scroll setting for the clip
+    ///   - allowsFullScreen: Whether or not fullscreen should be enabled
     ///   - preloadSetting: Specifies the type of preloading that should occur.
     ///   - autoplay: Whether or not the clip will autoplay
     ///   - muted: Whether or not the clip is muted
     /// - Returns: The HTML string that allows for embedded Twitch Clips.
-    private func getPlayerHtmlString(clipId: String, scrolling: ScrollingValues, preloadSetting: PreloadSettings,
-                                     autoplay: Bool?, muted: Bool?) -> String {
+    private func getPlayerHtmlString(clipId: String, scrolling: ScrollingValues, allowFullScreen: Bool,
+                                     preloadSetting: PreloadSettings, autoplay: Bool?, muted: Bool?) -> String {
         var currentPlayerParameters = [String]()
         var currentPlayerQueryParameters = [String: String]()
 
@@ -222,6 +237,7 @@ import WebKit
         if let muted = muted {
             currentPlayerQueryParameters[TwitchWebPlayerKeys.muted] = "\(muted)"
         }
+        currentPlayerQueryParameters[TwitchWebPlayerKeys.allowsFullScreen] = "\(allowFullScreen)"
         currentPlayerQueryParameters[TwitchWebPlayerKeys.clip] = clipId
         let queriedUrl = TwitchClipPlayer.clipBaseUrlAsString.withQueryItems(currentPlayerQueryParameters)
 

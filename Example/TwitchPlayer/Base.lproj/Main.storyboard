@@ -310,6 +310,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="muteOnLoad" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="preloadEnabled" value="YES"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="clipId" value="ApatheticStupidDuckDendiFace"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsFullScreen" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </wkWebView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="m8l-Gt-aIr">
