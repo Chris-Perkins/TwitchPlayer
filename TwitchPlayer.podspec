@@ -9,28 +9,22 @@
 Pod::Spec.new do |s|
   s.name             = 'TwitchPlayer'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of TwitchPlayer.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = 'Embed Twitch Videos, Clips, Streams, and Collections.'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+TwitchPlayer is a library that is used to help you integrate Twitch Videos, Streams, Clips, and Collections directly into your application without you having to worry about any of the details.
                        DESC
 
   s.homepage         = 'https://github.com/chrisfromtemporaryid@gmail.com/TwitchPlayer'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots     = 'https://github.com/Chris-Perkins/TwitchPlayer/raw/master/Readme_Imgs/StreamPlay.png', 'https://github.com/Chris-Perkins/TwitchPlayer/raw/master/Readme_Imgs/ClipPlay.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'chrisfromtemporaryid@gmail.com' => 'chrisfromtemporaryid@gmail.com' }
-  s.source           = { :git => 'https://github.com/chrisfromtemporaryid@gmail.com/TwitchPlayer.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'Chris Perkins' => 'chrisfromtemporaryid@gmail.com' }
+  s.source           = { :git => 'https://github.com/Chris-Perkins/TwitchPlayer.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://www.linkedin.com/in/chrispperkins/'
 
   s.ios.deployment_target = '11.0'
+  s.swift_version = '4.2'
 
   s.source_files = 'TwitchPlayer/Classes/**/*'
-  
   s.frameworks = 'WebKit'
 end
