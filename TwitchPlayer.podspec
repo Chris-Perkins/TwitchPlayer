@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TwitchPlayer'
-  s.version          = '0.1.1'
+  s.version          = '0.2.0'
   s.summary          = 'Embed Twitch Videos, Clips, Streams, and Collections.'
 
   s.description      = <<-DESC
@@ -22,7 +22,7 @@ TwitchPlayer is a library that is used to help you integrate Twitch Videos, Stre
   s.source           = { :git => 'https://github.com/Chris-Perkins/TwitchPlayer.git', :tag => s.version.to_s }
   s.social_media_url = 'https://www.linkedin.com/in/chrispperkins/'
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '8.0'
   s.swift_version = '4.2'
 
   s.source_files = 'TwitchPlayer/Classes/**/*'
