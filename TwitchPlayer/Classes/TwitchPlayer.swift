@@ -91,6 +91,7 @@ import WebKit
     /// `playerHtmlContent` holds the HTML Content as a String regarding a Twitch Embedded player.
     private static let playerHtmlContent =
 """
+<meta name="viewport" content="initial-scale=1.0" />
 <html>
     <body>
         <div id='twitch-embed' />
@@ -100,7 +101,7 @@ import WebKit
 
             const embed = new Twitch.Embed('twitch-embed', {
                 width: '100%',
-                height: '98%',
+                height: '95%',
                 playsinline: true,
                 {0}
             });

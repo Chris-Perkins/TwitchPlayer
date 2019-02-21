@@ -66,8 +66,9 @@ import WebKit
     /// `playerHtmlContent` holds the HTML Content as a String regarding a Twitch Clip Embedded player.
     private static let playerHtmlContent =
 """
+<meta name="viewport" content="initial-scale=1.0" />
 <iframe
-    height="98%"
+    height="95%"
     width="100%"
     frameborder="0"
     margin="0"
