@@ -23,6 +23,8 @@ You can then modify the variables directly from the Storyboard.
 
 ![](https://github.com/Chris-Perkins/TwitchPlayer/raw/master/Readme_Imgs/StoryboardProperties.png)
 
+**NOTE: This library uses WKWebView to display libraries. As a result, you cannot use any Twitch Player from the Storyboard before iOS 11.0.**
+
 ## Example Project
 
 ![](https://github.com/Chris-Perkins/TwitchPlayer/raw/master/Readme_Imgs/ClipPlay.png)
