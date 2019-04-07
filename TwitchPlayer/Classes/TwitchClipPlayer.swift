@@ -47,9 +47,6 @@ import WebKit
     /// opaque or not.
     private static let isWebViewBackgroundOpaque = false
 
-    /// `isWebViewScrollEnabled` specifies whether the web view this Clip Player is hosted in is scrollable or not.
-    private static let isWebViewScrollEnabled = false
-
     /// `htmlParameterDelimiter` is used to delimiter different parameters in HTML.
     private static let htmlParameterDelimiter = " "
 
@@ -66,7 +63,7 @@ import WebKit
     /// `playerHtmlContent` holds the HTML Content as a String regarding a Twitch Clip Embedded player.
     private static let playerHtmlContent =
 """
-<meta name="viewport" content="initial-scale=1.0" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <iframe
     height="95%"
     width="100%"
@@ -131,7 +128,7 @@ import WebKit
     /// done after initialization.
     @IBInspectable public var scrollingEnabled: Bool = false {
         didSet {
-            updateWebPlayer()
+            scrollView.isScrollEnabled = scrollingEnabled
         }
     }
 
@@ -177,7 +174,7 @@ import WebKit
 
         super.init(frame: frame, configuration: configuration)
 
-        scrollView.isScrollEnabled = TwitchClipPlayer.isWebViewScrollEnabled
+        scrollView.isScrollEnabled = scrollingEnabled
         isOpaque = TwitchClipPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
@@ -190,7 +187,7 @@ import WebKit
     override public init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
 
-        scrollView.isScrollEnabled = TwitchClipPlayer.isWebViewScrollEnabled
+        scrollView.isScrollEnabled = scrollingEnabled
         isOpaque = TwitchClipPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
@@ -201,7 +198,7 @@ import WebKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
-        scrollView.isScrollEnabled = TwitchClipPlayer.isWebViewScrollEnabled
+        scrollView.isScrollEnabled = scrollingEnabled
         isOpaque = TwitchClipPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }

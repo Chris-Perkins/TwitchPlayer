@@ -75,9 +75,6 @@ import WebKit
     /// opaque or not.
     private static let isWebViewBackgroundOpaque = false
 
-    /// `isWebViewScrollEnabled` specifies whether the web view this Clip Player is hosted in is scrollable or not.
-    private static let isWebViewScrollEnabled = false
-
     /// `jsonParameterDelimiter` is used to delimiter different parameters in JSON.
     private static let jsonParameterDelimiter = ","
 
@@ -91,7 +88,7 @@ import WebKit
     /// `playerHtmlContent` holds the HTML Content as a String regarding a Twitch Embedded player.
     private static let playerHtmlContent =
 """
-<meta name="viewport" content="initial-scale=1.0" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <html>
     <body>
         <div id='twitch-embed' />
@@ -226,6 +223,17 @@ import WebKit
         }
     }
 
+    /// `scrollingEnabled` is a settable variable that determines if the Twitch Clip Player allows scrolling. Default:
+    /// `false`
+    ///
+    /// - Warning: Setting this reloads the Player. This may cause un-polished behavior, and generally should not be
+    /// done after initialization.
+    @IBInspectable public var scrollingEnabled: Bool = false {
+        didSet {
+            scrollView.isScrollEnabled = scrollingEnabled
+        }
+    }
+
     /// Initializes a Twitch Player with the input parameters
     ///
     /// - Parameters:
@@ -237,12 +245,13 @@ import WebKit
     ///   - chatMode: The mode of the chat
     ///   - allowsFullScreen: Whether or not the player allows full screen
     ///   - playerTheme: The theme of the player
+    ///   - scrollEnabled: Whether the player allows scroll or not
     ///   - frame: The frame of the player
     ///   - configuration: The configuration for the web view
     init(channelToLoad: String?, videoToLoad: String?, collectionToLoad: String?,
          playerLayout: PlayerLayout?, chatMode: ChatDisplayMode? = .mobile,
-         allowsFullScreen: Bool = true, playerTheme: PlayerTheme? = .dark, frame: CGRect,
-         configuration: WKWebViewConfiguration) {
+         allowsFullScreen: Bool = true, playerTheme: PlayerTheme? = .dark, scrollEnabled: Bool = false,
+         frame: CGRect, configuration: WKWebViewConfiguration) {
         // Set read-only variables so they match
         self.showingChatPanel = playerLayout == .videoWithChat
         self.chatModeIsMobile = chatMode != nil && chatMode! == .mobile
@@ -259,7 +268,7 @@ import WebKit
 
         super.init(frame: frame, configuration: configuration)
 
-        scrollView.isScrollEnabled = TwitchPlayer.isWebViewScrollEnabled
+        scrollView.isScrollEnabled = scrollingEnabled
         isOpaque = TwitchPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
@@ -272,7 +281,7 @@ import WebKit
     override public init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
 
-        scrollView.isScrollEnabled = TwitchPlayer.isWebViewScrollEnabled
+        scrollView.isScrollEnabled = scrollingEnabled
         isOpaque = TwitchPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }
@@ -283,7 +292,7 @@ import WebKit
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
-        scrollView.isScrollEnabled = TwitchPlayer.isWebViewScrollEnabled
+        scrollView.isScrollEnabled = scrollingEnabled
         isOpaque = TwitchPlayer.isWebViewBackgroundOpaque
         updateWebPlayer()
     }

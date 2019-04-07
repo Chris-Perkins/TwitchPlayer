@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TwitchPlayer'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'Embed Twitch Videos, Clips, Streams, and Collections.'
 
   s.description      = <<-DESC
