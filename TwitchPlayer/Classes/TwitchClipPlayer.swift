@@ -64,16 +64,19 @@ import WebKit
     private static let playerHtmlContent =
 """
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<iframe
-    height="95%"
-    width="100%"
-    frameborder="0"
-    margin="0"
-    padding="0"
-    autoplay="false"
-    preload="none"
-    {0}
-/>
+<body margin="0" padding="0" style="margin: 0 0 0 0;">
+    <iframe
+        height="100%"
+        width="100%"
+        frameborder="0"
+        margin="0"
+        padding="0"
+        autoplay="false"
+        preload="none"
+        {0}
+    />
+    </iframe>
+</body>
 """
 
     // MARK: - IBInspectables

@@ -90,7 +90,7 @@ import WebKit
 """
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <html>
-    <body>
+    <body margin="0" padding="0" style="margin: 0 0 0 0;">
         <div id='twitch-embed' />
         <script src='https://embed.twitch.tv/embed/v1.js'></script><script type='text/javascript'>
             var playerCommandsToExecute = [];
@@ -98,7 +98,7 @@ import WebKit
 
             const embed = new Twitch.Embed('twitch-embed', {
                 width: '100%',
-                height: '95%',
+                height: '100%',
                 playsinline: true,
                 {0}
             });
