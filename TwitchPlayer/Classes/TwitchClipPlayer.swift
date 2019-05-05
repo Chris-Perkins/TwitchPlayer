@@ -71,8 +71,6 @@ import WebKit
         frameborder="0"
         margin="0"
         padding="0"
-        autoplay="false"
-        preload="none"
         {0}
     />
     </iframe>
