@@ -25,6 +25,10 @@ You can then modify the variables directly from the Storyboard.
 
 **NOTE: This library uses WKWebView to display libraries. As a result, you cannot use any Twitch Player from the Storyboard before iOS 11.0.**
 
+## Note:
+
+As of June 2020, Twitch now requires a Base URL in the string you load. Unfortunately, I am without a Macbook for development right now, and cannot address this library to fix the issue. As a workaround, you can change the "baseURL" string value in the TwitchClipPlayer/other embedded classes to work around this. Since I can't validate the change, it would be awesome if someone could quickly add that functionality so others can use the library!
+
 ## Example Project
 
 ![](https://github.com/Chris-Perkins/TwitchPlayer/raw/master/Readme_Imgs/ClipPlay.png)
